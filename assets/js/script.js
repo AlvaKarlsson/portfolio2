@@ -44,6 +44,8 @@ function showQuestion(){
     button3.textContent = theQuestions[index].answers.c
 }
 
+changeQuestion(0);
+
 function submit(){
     let button1 = document.getElementById('choise1');
     let button2 = document.getElementById('choise2');
