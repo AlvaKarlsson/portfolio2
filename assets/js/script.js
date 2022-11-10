@@ -27,3 +27,15 @@ const theQuestions = [
         correctAnswer: "a"
     }
 ];
+
+
+function changeQuestion(){
+
+}
+
+function submit(){
+
+}
+
+let buttonSubmit = document.getElementById('submit')
+buttonSubmit.addEventListener('click', submit);
