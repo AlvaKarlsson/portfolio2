@@ -28,6 +28,8 @@ const theQuestions = [
     }
 ];
 
+let index = 0;
+let score = 0;
 
 function showQuestion(){
     let question = document.getElementById('question');
@@ -43,7 +45,33 @@ function showQuestion(){
 }
 
 function submit(){
+    let button1 = document.getElementById('choise1');
+    let button2 = document.getElementById('choise2');
+    let button3 = document.getElementById('choise3');
 
+    let correctAnswer = theQuestions[index].correctAnswer
+    let userAnswer;
+
+    if(button1.checked){
+        userAnswer = "a"
+    } else if(button2.checked){
+        userAnswer = "b"
+    } else if(button3.checked){
+        userAnswer = "c"
+    }
+
+    if(userAnswer){
+        if(userAnswer === correctAnswer){
+            alert('That was right!')
+            score++;
+        } else if(userAnswer !== correctAnswer) {
+            alert('That was wrong...')
+        } 
+        index++;
+        changeQuestion();
+    } else {
+        alert('No choise picked')
+    }
 }
 
 let buttonSubmit = document.getElementById('submit')
