@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+
+body {
+    background-color: darkblue;
+    font-family: 'Merriweather', serif;
+}
+
+header {
+    background-color: white;
+    margin: 0 auto;
+    width: fit-content;
+    padding: 10px;
+    margin-top: 30px;
+}
+
+header h3 {
+    font-size: small;
+    text-align: center;
+}
+
+#questions {
+    background-color: white;
+    margin: 0 auto;
+    margin-top: 40px;
+    padding: 10px;
+    width: fit-content;
+    text-align: center;
+}
+
+#submit {
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 3px;
+}
+
+#submit:hover {
+    background: darkgrey;
+    color: white;
+}
