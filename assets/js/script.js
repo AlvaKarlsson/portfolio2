@@ -29,8 +29,17 @@ const theQuestions = [
 ];
 
 
-function changeQuestion(){
+function showQuestion(){
+    let question = document.getElementById('question');
+    let button1 = document.getElementById('labelchoise1');
+    let button2 = document.getElementById('labelchoise2');
+    let button3 = document.getElementById('labelchoise3');
 
+    question.textContent = theQuestions[index].question
+
+    button1.textContent = theQuestions[index].answers.a
+    button2.textContent = theQuestions[index].answers.b
+    button3.textContent = theQuestions[index].answers.c
 }
 
 function submit(){
