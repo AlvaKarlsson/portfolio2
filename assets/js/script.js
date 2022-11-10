@@ -37,11 +37,15 @@ function showQuestion(){
     let button2 = document.getElementById('labelchoise2');
     let button3 = document.getElementById('labelchoise3');
 
+    if(index < theQuestions.length){
     question.textContent = theQuestions[index].question
 
     button1.textContent = theQuestions[index].answers.a
     button2.textContent = theQuestions[index].answers.b
     button3.textContent = theQuestions[index].answers.c
+    } else {
+        showScore()
+    }
 }
 
 showQuestion(0);
@@ -56,10 +60,13 @@ function submit(){
 
     if(button1.checked){
         userAnswer = "a"
+        button1.checked = false
     } else if(button2.checked){
         userAnswer = "b"
+        button2.checked = false
     } else if(button3.checked){
         userAnswer = "c"
+        button3.checked = false 
     }
 
     if(userAnswer){
@@ -70,11 +77,38 @@ function submit(){
             alert('That was wrong...')
         } 
         index++;
-        changeQuestion();
+        showQuestion();
     } else {
         alert('No choise picked')
     }
 }
 
+function showScore(){
+    let questions = document.getElementById('questions')
+    let scoreBoard = document.getElementById('score')
+    let points = document.getElementById('points')
+
+    questions.style.display = 'none'
+    scoreBoard.style.display = 'block' 
+
+    points.textContent = `Score: ${score} / ${theQuestions.length}`
+}
+
+function playAgain(){
+    index = 0;
+    score = 0;
+
+    let questions = document.getElementById('questions')
+    let scoreBoard = document.getElementById('score')
+
+    questions.style.display = 'block'
+    scoreBoard.style.display = 'none'
+
+    showQuestion();
+}
+
 let buttonSubmit = document.getElementById('submit')
 buttonSubmit.addEventListener('click', submit);
+
+let buttonPlayAgain = document.getElementById('playAgain')
+buttonPlayAgain.addEventListener('click', playAgain)
