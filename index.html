@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/style.css">
     <title>Get to know Kalmar</title>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
     <header>
@@ -16,17 +16,29 @@
     <div id="questions" class="divboxes">
         <p id="question"></p>
         <ul>
-        <li><input type=radio id="choise1"></input>
-        <label for="choise1" id="labelchoise1"></label></li>
-        <li><input type=radio id="choise2"></input>
-        <label for="choise2" id="labelchoise2"></label></li>
-        <li><input type=radio id="choise3"></input>
-        <label for="choise3" id="labelchoise3"></label></li>
+        <li>
+            <input type=radio id="optionA"></input>
+            <label for="optionA" id="labelOptionA"></label>
+        </li>
+        <li>
+            <input type=radio id="optionB"></input>
+            <label for="optionB" id="labelOptionB"></label>
+        </li>
+        <li>
+            <input type=radio id="optionC"></input>
+            <label for="optionC" id="labelOptionC"></label>
+        </li>
         </ul>
+        <p id="correctUserAnswer"></p>
+    </div>
+    <div>
         <button id="submit">Check Answer</button>
+        <button id="nextQuestion">Next Question</button>
     </div>
     <div id="score" class="divboxes">
         <p id="points"></p>
+    </div>
+    <div>
         <button id="playAgain">Play Again!</button>
     </div>
 </main>

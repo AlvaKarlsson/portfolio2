@@ -1,4 +1,4 @@
-const theQuestions = [
+const QUESTIONS = [
     {
         question: "Between which years was Kalmar the Capital city of Scandinavia?",
         answers: {
@@ -26,77 +26,110 @@ const theQuestions = [
         },
         correctAnswer: "a"
     }
-];
+]
 
-let index = 0;
-let score = 0;
+let currentQuestionIndex = 2
+let score = 0
+let questions = [...QUESTIONS]
 
-function showQuestion(){
-    let question = document.getElementById('question');
-    let button1 = document.getElementById('labelchoise1');
-    let button2 = document.getElementById('labelchoise2');
-    let button3 = document.getElementById('labelchoise3');
+let submitButtonNode = document.getElementById('submit')
+let playAgainButtonNode = document.getElementById('playAgain')
+let checkAnswerButtonNode = document.getElementById('nextQuestion')
 
-    if(index < theQuestions.length){
-    question.textContent = theQuestions[index].question
+function displayCorrectAnswer(message) {
+    let correctUserAnswer = document.getElementById('correctUserAnswer')
 
-    button1.textContent = theQuestions[index].answers.a
-    button2.textContent = theQuestions[index].answers.b
-    button3.textContent = theQuestions[index].answers.c
+    correctUserAnswer.textContent = message
+    console.log(currentQuestionIndex + 1, questions.length)
+    if(currentQuestionIndex + 1 >= questions.length) {
+        checkAnswerButtonNode.textContent = 'Show result'
+    }
+
+    checkAnswerButtonNode.style.display = 'block'
+}
+
+function showQuestion() {
+    let questionNode = document.getElementById('question')
+    let optionANode = document.getElementById('labelOptionA')
+    let optionBNode = document.getElementById('labelOptionB')
+    let optionCNode = document.getElementById('labelOptionC')
+
+    if(currentQuestionIndex < questions.length){
+        questionNode.textContent = questions[currentQuestionIndex].question
+        optionANode.textContent = questions[currentQuestionIndex].answers.a
+        optionBNode.textContent = questions[currentQuestionIndex].answers.b
+        optionCNode.textContent = questions[currentQuestionIndex].answers.c
     } else {
-        showScore()
+        showScore();
     }
 }
 
-showQuestion(0);
+function onSubmitClick() {
+    let optionA = document.getElementById('optionA')
+    let optionB = document.getElementById('optionB')
+    let optionC = document.getElementById('optionC')
 
-function submit(){
-    let button1 = document.getElementById('choise1');
-    let button2 = document.getElementById('choise2');
-    let button3 = document.getElementById('choise3');
-
-    let correctAnswer = theQuestions[index].correctAnswer
-    let userAnswer;
-
-    if(button1.checked){
-        userAnswer = "a"
-        button1.checked = false
-    } else if(button2.checked){
-        userAnswer = "b"
-        button2.checked = false
-    } else if(button3.checked){
-        userAnswer = "c"
-        button3.checked = false 
+    function resetButtonState() {
+        optionA.checked = false
+        optionB.checked = false
+        optionC.checked = false
     }
+
+    let correctAnswer = questions[currentQuestionIndex].correctAnswer
+    let userAnswer
+
+    if(optionA.checked){
+        userAnswer = "a"
+    } else if(optionB.checked){
+        userAnswer = "b"
+    } else if(optionC.checked){
+        userAnswer = "c"
+    }
+
+    resetButtonState()
 
     if(userAnswer){
         if(userAnswer === correctAnswer){
-            alert('That was right!')
+            // Instead of alert, try to show message on UI
+            displayCorrectAnswer('That was right!')
             score++;
-        } else if(userAnswer !== correctAnswer) {
-            alert('That was wrong...')
-        } 
-        index++;
-        showQuestion();
+        } else {
+            displayCorrectAnswer('That was wrong...')
+        }
+        currentQuestionIndex++
+        submitButtonNode.style.display = 'none'
     } else {
-        alert('No choise picked')
+        displayCorrectAnswer('No choise picked')
     }
 }
 
-function showScore(){
-    let questions = document.getElementById('questions')
+function nextQuestionClick() {
+    let correctUserAnswer = document.getElementById('correctUserAnswer')
+    let nextQuestionButtonNode = document.getElementById('nextQuestion')
+    let checkAnswerButton = document.getElementById('submit')
+
+    nextQuestion.style.display = 'none'
+    checkAnswerButton.style.display = 'block'
+    
+    showQuestion()
+}
+
+function showScore() {
+    let questionBoard = document.getElementById('questions')
     let scoreBoard = document.getElementById('score')
     let points = document.getElementById('points')
 
-    questions.style.display = 'none'
-    scoreBoard.style.display = 'block' 
+    questionBoard.style.display = 'none'
+    scoreBoard.style.display = 'block'
+    
+    points.textContent = `Score: ${score} / ${questions.length}`
 
-    points.textContent = `Score: ${score} / ${theQuestions.length}`
+    checkAnswerButtonNode.textContent = 'Next Question'
 }
 
-function playAgain(){
-    index = 0;
-    score = 0;
+function onPlayAgainClick() {
+    currentQuestionIndex = 0
+    score = 0
 
     let questions = document.getElementById('questions')
     let scoreBoard = document.getElementById('score')
@@ -104,11 +137,22 @@ function playAgain(){
     questions.style.display = 'block'
     scoreBoard.style.display = 'none'
 
-    showQuestion();
+    console.log(checkAnswerButtonNode)
+    checkAnswerButtonNode.textContent = ""
+
+    showQuestion()
 }
 
-let buttonSubmit = document.getElementById('submit')
-buttonSubmit.addEventListener('click', submit);
+function initEventListeners() {
+    submitButtonNode.addEventListener('click', onSubmitClick)
+    playAgainButtonNode.addEventListener('click', onPlayAgainClick)
+    checkAnswerButtonNode.addEventListener('click', nextQuestionClick)
+}
 
-let buttonPlayAgain = document.getElementById('playAgain')
-buttonPlayAgain.addEventListener('click', playAgain)
+function startGame() {
+    initEventListeners()
+    showQuestion()
+}
+
+
+startGame()
