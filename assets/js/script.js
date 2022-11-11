@@ -1,30 +1,30 @@
 const QUESTIONS = [
     {
-        question: "Between which years was Kalmar the Capital city of Scandinavia?",
+        question: 'Between which years was Kalmar the Capital city of Scandinavia?',
         answers: {
-            a: "1435 - 1546",
-            b: "1397 - 1523",
-            c: "1362 - 1489"
+            a: '1435 - 1546',
+            b: '1397 - 1523',
+            c: '1362 - 1489'
         },
-        correctAnswer: "b"
+        correctAnswer: 'b'
     },
     {
-        question: "Kalmar is famous for its' castle, when did the construction of it started?",
+        question: 'Kalmar is famous for its castle, when did the construction of it started?',
         answers: {
-            a: "The end of the 12th century",
-            b: "The middle of the 12th century",
-            c: "The beginning of the 13th century"
+            a: 'The end of the 12th century',
+            b: 'The middle of the 12th century',
+            c: 'The beginning of the 13th century'
         },
-        correctAnswer: "a"
+        correctAnswer: 'a'
     },
     {
-        question: "In Kalmar, a very large sporting event is held every year, which one?",
+        question: 'In Kalmar, a very large sporting event is held every year, which one?',
         answers: {
-            a: "Ironman",
-            b: "Diamond League",
-            c: "Vasaloppet"
+            a: 'Ironman',
+            b: 'Diamond League',
+            c: 'Vasaloppet'
         },
-        correctAnswer: "a"
+        correctAnswer: 'a'
     }
 ]
 
@@ -77,11 +77,11 @@ function onSubmitClick() {
     let userAnswer
 
     if(optionA.checked){
-        userAnswer = "a"
+        userAnswer = 'a'
     } else if(optionB.checked){
-        userAnswer = "b"
+        userAnswer = 'b'
     } else if(optionC.checked){
-        userAnswer = "c"
+        userAnswer = 'c'
     }
 
     resetButtonState()
