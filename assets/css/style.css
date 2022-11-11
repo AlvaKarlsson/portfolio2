@@ -8,7 +8,10 @@
 
 
 body {
-    background-color: darkblue;
+    background: url("/assets/img/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
     font-family: 'Merriweather', serif;
     height: 100vh;
 }
@@ -60,6 +63,18 @@ header h3 {
 }
 
 #submit:hover {
+    background: darkgrey;
+    color: white;
+}
+
+#playAgain {
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 3px;
+}
+
+#playAgain:hover {
     background: darkgrey;
     color: white;
 }
