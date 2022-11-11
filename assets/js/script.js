@@ -140,7 +140,7 @@ function onPlayAgainClick() {
     submitButtonNode.style.display = 'block'
 
     playAgainButtonNode.style.display = 'none'
-    correctUserAnswer.textContent = ""
+    correctUserAnswer.textContent = ''
 
     showQuestion()
 }
