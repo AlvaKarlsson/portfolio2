@@ -28,7 +28,7 @@ const theQuestions = [
     }
 ];
 
-let index = 2;
+let index = 0;
 let score = 0;
 
 function showQuestion(){
