@@ -28,7 +28,7 @@ const QUESTIONS = [
     }
 ]
 
-let currentQuestionIndex = 2
+let currentQuestionIndex = 0
 let score = 0
 let questions = [...QUESTIONS]
 
@@ -36,16 +36,14 @@ let submitButtonNode = document.getElementById('submit')
 let playAgainButtonNode = document.getElementById('playAgain')
 let checkAnswerButtonNode = document.getElementById('nextQuestion')
 
-function displayCorrectAnswer(message) {
+function displayCorrectAnswer(message, color) {
     let correctUserAnswer = document.getElementById('correctUserAnswer')
 
     correctUserAnswer.textContent = message
-    console.log(currentQuestionIndex + 1, questions.length)
+    correctUserAnswer.style.color = color
     if(currentQuestionIndex + 1 >= questions.length) {
         checkAnswerButtonNode.textContent = 'Show result'
     }
-
-    checkAnswerButtonNode.style.display = 'block'
 }
 
 function showQuestion() {
@@ -90,14 +88,14 @@ function onSubmitClick() {
 
     if(userAnswer){
         if(userAnswer === correctAnswer){
-            // Instead of alert, try to show message on UI
-            displayCorrectAnswer('That was right!')
+            displayCorrectAnswer('That was right!', 'green')
             score++;
         } else {
-            displayCorrectAnswer('That was wrong...')
+            displayCorrectAnswer('That was wrong...', 'red')
         }
         currentQuestionIndex++
         submitButtonNode.style.display = 'none'
+        checkAnswerButtonNode.style.display = 'block'
     } else {
         displayCorrectAnswer('No choise picked')
     }
@@ -105,11 +103,10 @@ function onSubmitClick() {
 
 function nextQuestionClick() {
     let correctUserAnswer = document.getElementById('correctUserAnswer')
-    let nextQuestionButtonNode = document.getElementById('nextQuestion')
-    let checkAnswerButton = document.getElementById('submit')
 
     nextQuestion.style.display = 'none'
-    checkAnswerButton.style.display = 'block'
+    submitButtonNode.style.display = 'block'
+    correctUserAnswer.textContent = ''
     
     showQuestion()
 }
@@ -121,6 +118,9 @@ function showScore() {
 
     questionBoard.style.display = 'none'
     scoreBoard.style.display = 'block'
+    submitButtonNode.style.display = 'none'
+    playAgainButtonNode.style.display = 'block'
+    
     
     points.textContent = `Score: ${score} / ${questions.length}`
 
@@ -133,12 +133,14 @@ function onPlayAgainClick() {
 
     let questions = document.getElementById('questions')
     let scoreBoard = document.getElementById('score')
+    let correctUserAnswer = document.getElementById('correctUserAnswer')
 
     questions.style.display = 'block'
     scoreBoard.style.display = 'none'
+    submitButtonNode.style.display = 'block'
 
-    console.log(checkAnswerButtonNode)
-    checkAnswerButtonNode.textContent = ""
+    playAgainButtonNode.style.display = 'none'
+    correctUserAnswer.textContent = ""
 
     showQuestion()
 }

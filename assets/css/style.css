@@ -56,7 +56,7 @@ header h1, h3 {
     display: none;
 }
 
-#submit {
+button {
     display: block;
     margin: 0 auto;
     margin-top: 20px;
@@ -64,22 +64,17 @@ header h1, h3 {
     font-size: 1rem;
 }
 
-#submit:hover {
+button:hover {
     background: darkgrey;
     color: white;
+}
+
+#nextQuestion {
+    display: none;
 }
 
 #playAgain {
-    display: block;
-    margin: 0 auto;
-    margin-top: 20px;
-    padding: 3px;
-    font-size: 1rem;
-}
-
-#playAgain:hover {
-    background: darkgrey;
-    color: white;
+    display: none;
 }
 
 @media screen and (max-width: 1000px){
@@ -97,6 +92,12 @@ header h1, h3 {
         background-repeat: no-repeat;
         background-size: cover;
         overflow: hidden;
+    }
+
+    button {
+        position: absolute;
+        bottom: 5%;
+        left: 43%;
     }
 }
 
@@ -132,5 +133,9 @@ header h1, h3 {
 
     #playAgain {
         font-size: medium;
+    }
+
+    button {
+        left: 35%;
     }
 }
