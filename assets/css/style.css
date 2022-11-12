@@ -125,6 +125,7 @@ button:hover {
     .divboxes {
         font-size: medium;
         width: 85%;
+        margin-top: 140px;
     }
 
     #submit {
