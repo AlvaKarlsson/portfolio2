@@ -58,7 +58,7 @@ function showQuestion() {
         optionBNode.textContent = questions[currentQuestionIndex].answers.b
         optionCNode.textContent = questions[currentQuestionIndex].answers.c
     } else {
-        showScore();
+        showScore()
     }
 }
 
