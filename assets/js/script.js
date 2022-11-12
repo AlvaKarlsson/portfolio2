@@ -97,7 +97,7 @@ function onSubmitClick() {
         submitButtonNode.style.display = 'none'
         checkAnswerButtonNode.style.display = 'block'
     } else {
-        displayCorrectAnswer('No choise picked')
+        displayCorrectAnswer('No choise picked', 'black')
     }
 }
 
